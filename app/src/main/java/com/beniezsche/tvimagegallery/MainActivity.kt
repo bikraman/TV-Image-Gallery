@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Orientation
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.beniezsche.tvimagegallery.adapter.ImageAdapter
 import com.beniezsche.tvimagegallery.models.Image
 

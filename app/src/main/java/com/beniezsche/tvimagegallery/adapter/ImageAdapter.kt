@@ -1,5 +1,6 @@
 package com.beniezsche.tvimagegallery.adapter
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.RecyclerView
 import com.beniezsche.tvimagegallery.R
+import com.beniezsche.tvimagegallery.SingleImageActivity
 import com.beniezsche.tvimagegallery.models.Image
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -22,6 +24,16 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView = itemView.findViewById<ImageView>(R.id.image)
+
+        init {
+
+            imageView.setOnClickListener {
+                val intent = Intent(it.context, SingleImageActivity::class.java)
+                intent.putExtra("url", imageList[adapterPosition].src)
+                it.context.startActivity(intent)
+            }
+
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -34,22 +46,22 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        //Glide.with(holder.itemView.context).load(imageList[position].src).into(holder.imageView)
+        Glide.with(holder.itemView.context).load(imageList[position].src).into(holder.imageView)
 
-        Glide.with(holder.itemView.context)
-            .asBitmap()
-            .load(imageList[position].src)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(object : CustomTarget<Bitmap?>() {
-                override fun onResourceReady(
-                    resource: Bitmap,
-                    @Nullable transition: Transition<in Bitmap?>?
-                ) {
-                    holder.imageView.setImageBitmap(resource)
-                    holder.imageView.buildDrawingCache()
-                }
-
-                override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
-            })
+//        Glide.with(holder.itemView.context)
+//            .asBitmap()
+//            .load(imageList[position].src)
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .into(object : CustomTarget<Bitmap?>() {
+//                override fun onResourceReady(
+//                    resource: Bitmap,
+//                    @Nullable transition: Transition<in Bitmap?>?
+//                ) {
+//                    holder.imageView.setImageBitmap(resource)
+//                    holder.imageView.buildDrawingCache()
+//                }
+//
+//                override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
+//            })
     }
 }

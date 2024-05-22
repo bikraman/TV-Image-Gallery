@@ -87,7 +87,7 @@ class ImageViewModel : ViewModel() {
         "https://image.tmdb.org/t/p/w500/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
         "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
         "https://image.tmdb.org/t/p/w500/cqxg1CihGR5ge0i1wYXr4Rdeppu.jpg",
-        "https://image.tmdb.org/t/p/w500imekS7f1OuHyUP2LAiTEM0zBzUz.jpg",
+        "https://image.tmdb.org/t/p/w500/imekS7f1OuHyUP2LAiTEM0zBzUz.jpg",
     )
 
     fun getImages(): LiveData<List<Image>> {
