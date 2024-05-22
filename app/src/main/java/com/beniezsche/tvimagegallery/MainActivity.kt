@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.beniezsche.tvimagegallery.adapter.ImageAdapter
+import com.beniezsche.tvimagegallery.models.Image
 
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.getImages().observe(this, Observer {
-
+            imageAdapter.imageList.clear()
+            imageAdapter.imageList.addAll(it)
+            imageAdapter.notifyDataSetChanged()
         })
 
 
