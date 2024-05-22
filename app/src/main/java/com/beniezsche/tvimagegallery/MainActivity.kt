@@ -11,12 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val galleryGrid = findViewById<RecyclerView>(R.id.galleryGrid).apply {
             this.layoutManager = GridLayoutManager(this@MainActivity, 3)
             this.adapter = ImageAdapter()
         }
-
-
     }
 }
