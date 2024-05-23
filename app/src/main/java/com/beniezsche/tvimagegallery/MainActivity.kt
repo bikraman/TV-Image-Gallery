@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val imageAdapter = ImageAdapter()
 
         val galleryGrid = findViewById<RecyclerView>(R.id.galleryGrid).apply {
-            this.layoutManager = GridLayoutManager(this@MainActivity, 3)
+            this.layoutManager = GridLayoutManager(this@MainActivity, 5)
             this.adapter = imageAdapter
         }
 

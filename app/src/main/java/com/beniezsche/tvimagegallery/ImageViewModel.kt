@@ -17,7 +17,7 @@ class ImageViewModel : ViewModel() {
         "https://image.tmdb.org/t/p/w500/y3AeW200hqGLxoPyHMDHpzudylz.jpg",
         "https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
         "https://image.tmdb.org/t/p/w500/uuA01PTtPombRPvL9dvsBqOBJWm.jpg",
-        "https://image.tmdb.org/t/p/w500e1J2oNzSBdou01sUvriVuoYp0pJ.jpg",
+        "https://image.tmdb.org/t/p/w500/e1J2oNzSBdou01sUvriVuoYp0pJ.jpg",
         "https://image.tmdb.org/t/p/w500/dJaIw8OgACelojyV6YuVsOhtTLO.jpg",
         "https://image.tmdb.org/t/p/w500/esLooowdB92I3dVI3ENlPPpTuWT.jpg",
         "https://image.tmdb.org/t/p/w500/zK2sFxZcelHJRPVr242rxy5VK4T.jpg",
