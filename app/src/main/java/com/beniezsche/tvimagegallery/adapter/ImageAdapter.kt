@@ -46,7 +46,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(imageList[position].src).into(holder.imageView)
+        Glide.with(holder.itemView.context).load(imageList[position].src).placeholder(R.drawable.placeholder).into(holder.imageView)
 
 //        Glide.with(holder.itemView.context)
 //            .asBitmap()
