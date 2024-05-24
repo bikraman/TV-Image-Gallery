@@ -8,6 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/galleryGrid"
+        android:descendantFocusability="beforeDescendants"
+        android:nextFocusDown="@id/galleryGrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>

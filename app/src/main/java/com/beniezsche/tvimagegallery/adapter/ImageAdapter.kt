@@ -27,7 +27,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
         init {
 
-            imageView.setOnClickListener {
+            itemView.rootView.setOnClickListener {
                 val intent = Intent(it.context, SingleImageActivity::class.java)
                 intent.putExtra("url", imageList[adapterPosition].src)
                 it.context.startActivity(intent)
