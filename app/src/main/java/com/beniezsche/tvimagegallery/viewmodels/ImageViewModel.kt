@@ -1,4 +1,4 @@
-package com.beniezsche.tvimagegallery
+package com.beniezsche.tvimagegallery.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -79,7 +79,7 @@ class ImageViewModel : ViewModel() {
         "https://image.tmdb.org/t/p/w500/AtsgWhDnHTq68L0lLsUrCnM7TjG.jpg",
         "https://image.tmdb.org/t/p/w500/sw4M0jLT04FM1p3C2XQ3il50wgV.jpg",
         "https://image.tmdb.org/t/p/w500/rGfGfgL2pEPCfhIvqHXieXFn7gp.jpg",
-        "https://image.tmdb.org/t/p/w500fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
+        "https://image.tmdb.org/t/p/w500/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
         "https://image.tmdb.org/t/p/w500/zj8ongFhtWNsVlfjOGo8pSr7PQg.jpg",
         "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
         "https://image.tmdb.org/t/p/w500/jFK2ZLQUzo9pea0jfMCHDfvWsx7.jpg",

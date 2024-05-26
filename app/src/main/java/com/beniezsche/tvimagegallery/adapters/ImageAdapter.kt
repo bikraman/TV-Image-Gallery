@@ -1,21 +1,16 @@
-package com.beniezsche.tvimagegallery.adapter
+package com.beniezsche.tvimagegallery.adapters
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.annotation.Nullable
 import androidx.recyclerview.widget.RecyclerView
 import com.beniezsche.tvimagegallery.R
 import com.beniezsche.tvimagegallery.SingleImageActivity
 import com.beniezsche.tvimagegallery.models.Image
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 
 
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
@@ -33,6 +28,13 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
                 it.context.startActivity(intent)
             }
 
+            itemView.rootView.setOnFocusChangeListener { v, hasFocus ->
+                if (hasFocus) {
+//                    Log.d("TV", hasFocus.toString())
+                    imageList[adapterPosition].hasFocus = true
+                }
+            }
+
         }
     }
 
@@ -48,6 +50,9 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         Glide.with(holder.itemView.context).load(imageList[position].src).placeholder(R.drawable.placeholder).into(holder.imageView)
 
+        if (imageList[position].hasFocus) {
+            holder.itemView.requestFocus()
+        }
 //        Glide.with(holder.itemView.context)
 //            .asBitmap()
 //            .load(imageList[position].src)
