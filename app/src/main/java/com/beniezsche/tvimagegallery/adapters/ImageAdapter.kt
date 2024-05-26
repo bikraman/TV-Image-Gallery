@@ -16,7 +16,8 @@ import com.bumptech.glide.Glide
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     val imageList = ArrayList<Image>()
-    var lastPosition = RecyclerView.NO_POSITION;
+
+    lateinit var onItemClickListener: OnItemClickListener
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.image)
@@ -25,7 +26,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
             itemView.rootView.setOnClickListener {
                 val intent = Intent(it.context, SingleImageActivity::class.java)
                 intent.putExtra("url", imageList[bindingAdapterPosition].src)
-                lastPosition = bindingAdapterPosition
+                onItemClickListener.onItemClick(bindingAdapterPosition)
                 it.context.startActivity(intent)
             }
         }
@@ -41,11 +42,11 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-
         Glide.with(holder.itemView.context).load(imageList[position].src).placeholder(R.drawable.placeholder).into(holder.imageView)
+    }
 
-        if (position == lastPosition) {
-            holder.itemView.requestFocus()
-        }
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
     }
 }
+

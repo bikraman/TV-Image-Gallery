@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.beniezsche.tvimagegallery.adapters.ImageAdapter
 import com.beniezsche.tvimagegallery.viewmodels.ImageViewModel
 import com.rubensousa.dpadrecyclerview.DpadRecyclerView
@@ -11,6 +12,9 @@ import com.rubensousa.dpadrecyclerview.DpadRecyclerView
 
 class MainActivity : AppCompatActivity() {
 
+
+    lateinit var galleryGrid: DpadRecyclerView
+    private var lastPositionOfClick = RecyclerView.NO_POSITION
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val imageAdapter = ImageAdapter()
 
-        val galleryGrid = findViewById<DpadRecyclerView>(R.id.galleryGrid)
+        galleryGrid = findViewById(R.id.galleryGrid)
         galleryGrid.setSpanCount(5)
 
         galleryGrid.adapter = imageAdapter
@@ -30,5 +34,17 @@ class MainActivity : AppCompatActivity() {
             imageAdapter.notifyDataSetChanged()
         })
 
+        imageAdapter.onItemClickListener = object : ImageAdapter.OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                lastPositionOfClick = position
+            }
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        galleryGrid.scrollToPosition(lastPositionOfClick)
+        lastPositionOfClick = RecyclerView.NO_POSITION
     }
 }
