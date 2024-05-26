@@ -19,7 +19,7 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     var lastPosition = RecyclerView.NO_POSITION;
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageView = itemView.findViewById<ImageView>(R.id.image)
+        val imageView: ImageView = itemView.findViewById(R.id.image)
 
         init {
             itemView.rootView.setOnClickListener {

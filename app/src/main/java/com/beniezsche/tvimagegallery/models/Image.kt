@@ -1,3 +1,3 @@
 package com.beniezsche.tvimagegallery.models
 
-data class Image(val src: String, var hasFocus: Boolean = false)
+data class Image(val src: String)
