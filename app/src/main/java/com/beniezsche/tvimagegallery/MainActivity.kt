@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         galleryGrid = findViewById(R.id.galleryGrid)
         galleryGrid.setSpanCount(5)
-
         galleryGrid.adapter = imageAdapter
 
         imageViewModel.getImages().observe(this, Observer {

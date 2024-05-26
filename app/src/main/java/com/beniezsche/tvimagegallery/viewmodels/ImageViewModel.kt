@@ -17,8 +17,8 @@ class ImageViewModel : ViewModel() {
 
         val data = MutableLiveData<List<Image>>()
 
-        data.value = ImageData.getImages().map {
-            Image(it.removeRange(4,5))
+        data.value = ImageData.getImages().map { url ->
+            Image(url.removeRange(4,5)) //This is done to remove the s from https because there's some issue with using the https version of the url
         }
 
         return data
