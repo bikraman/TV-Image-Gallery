@@ -1,6 +1,7 @@
 package com.beniezsche.tvimagegallery
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.beniezsche.tvimagegallery.adapters.ImageAdapter
 import com.beniezsche.tvimagegallery.viewmodels.ImageViewModel
+import com.rubensousa.dpadrecyclerview.DpadRecyclerView
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,10 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         val imageAdapter = ImageAdapter()
 
-        val galleryGrid = findViewById<RecyclerView>(R.id.galleryGrid).apply {
-            this.layoutManager = GridLayoutManager(this@MainActivity, 5)
-            this.adapter = imageAdapter
-        }
+        val galleryGrid = findViewById<DpadRecyclerView>(R.id.galleryGrid)
+        galleryGrid.setSpanCount(5)
+
+        galleryGrid.adapter = imageAdapter
 
         viewModel.getImages().observe(this, Observer {
             imageAdapter.imageList.clear()

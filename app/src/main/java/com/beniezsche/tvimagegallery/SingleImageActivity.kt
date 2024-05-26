@@ -11,6 +11,6 @@ class SingleImageActivity : AppCompatActivity() {
 
         val url = intent.getStringExtra("url")
 
-        Glide.with(this).load(url).into(findViewById(R.id.image))
+        Glide.with(this).load(url).placeholder(R.drawable.placeholder).into(findViewById(R.id.image))
     }
 }

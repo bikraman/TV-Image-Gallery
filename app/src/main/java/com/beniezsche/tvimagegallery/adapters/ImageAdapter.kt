@@ -15,26 +15,19 @@ import com.bumptech.glide.Glide
 
 class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
-    var imageList = ArrayList<Image>()
+    val imageList = ArrayList<Image>()
+    var lastPosition = RecyclerView.NO_POSITION;
 
     inner class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView = itemView.findViewById<ImageView>(R.id.image)
 
         init {
-
             itemView.rootView.setOnClickListener {
                 val intent = Intent(it.context, SingleImageActivity::class.java)
-                intent.putExtra("url", imageList[adapterPosition].src)
+                intent.putExtra("url", imageList[bindingAdapterPosition].src)
+                lastPosition = bindingAdapterPosition
                 it.context.startActivity(intent)
             }
-
-            itemView.rootView.setOnFocusChangeListener { v, hasFocus ->
-                if (hasFocus) {
-//                    Log.d("TV", hasFocus.toString())
-                    imageList[adapterPosition].hasFocus = true
-                }
-            }
-
         }
     }
 
@@ -48,25 +41,11 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+
         Glide.with(holder.itemView.context).load(imageList[position].src).placeholder(R.drawable.placeholder).into(holder.imageView)
 
-        if (imageList[position].hasFocus) {
+        if (position == lastPosition) {
             holder.itemView.requestFocus()
         }
-//        Glide.with(holder.itemView.context)
-//            .asBitmap()
-//            .load(imageList[position].src)
-//            .diskCacheStrategy(DiskCacheStrategy.ALL)
-//            .into(object : CustomTarget<Bitmap?>() {
-//                override fun onResourceReady(
-//                    resource: Bitmap,
-//                    @Nullable transition: Transition<in Bitmap?>?
-//                ) {
-//                    holder.imageView.setImageBitmap(resource)
-//                    holder.imageView.buildDrawingCache()
-//                }
-//
-//                override fun onLoadCleared(@Nullable placeholder: Drawable?) {}
-//            })
     }
 }

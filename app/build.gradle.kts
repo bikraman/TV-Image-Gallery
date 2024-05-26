@@ -47,4 +47,6 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    implementation("com.rubensousa.dpadrecyclerview:dpadrecyclerview:1.3.0-alpha02")
 }
